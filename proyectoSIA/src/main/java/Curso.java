@@ -1,9 +1,9 @@
 import java.util.*;
 
-public class Curso {
+class Curso {
     private int id;
     private int cantEstudiantes;
-    private ArrayList estudiantes;
+    private ArrayList<Estudiante> estudiantes;
     private String profJefe;
     private String curso;
 
