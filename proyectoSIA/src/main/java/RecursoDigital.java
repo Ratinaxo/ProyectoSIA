@@ -1,11 +1,12 @@
- public class RecursoDigital
+public class RecursoDigital
 {
     int id;
     String recurso;
     String asignatura;
 
-    public RecursoDigital (String recurso, String asignatura)
+    public RecursoDigital (int id, String recurso, String asignatura)
     {
+        this.id = id;
         this.recurso = recurso;
         this.asignatura = asignatura;
     }
@@ -26,8 +27,8 @@
     public void setRecurso(String recurso) {
         this.recurso = recurso;
     }
-    
-    public String getAsignnatura() {
+
+    public String getAsignatura() {
         return asignatura;
     }
 
