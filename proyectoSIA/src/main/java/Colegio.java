@@ -1,51 +1,47 @@
+
 import java.util.*;
 import java.io.*;
 
-class Colegio
-{
+class Colegio {
+
     private String nombreColegio;
-    private Map <String, Curso> mapaCursos;
+    private Map<String, Curso> mapaCursos;
     BufferedReader lector;
 
-
-    public Colegio(String nombreColegio)
-    {
+    public Colegio(String nombreColegio) {
         this.nombreColegio = nombreColegio;
         this.mapaCursos = new HashMap<>();
         lector = new BufferedReader(new InputStreamReader(System.in));
     }
 
-    public void ejecutar() throws IOException
-    {
+    public void ejecutar() throws IOException {
         int opcion = 0;
-        
+
         inicializarSistema();
-        while (opcion != 4)
-        {
+        while (opcion != 5) {
             mostrarMenu();
             opcion = Integer.parseInt(lector.readLine());
-            
+
             System.out.println("=====================================\n");
-            
-            switch(opcion)
-            {
-                case 1:
-                {
+
+            switch (opcion) {
+                case 1: {
                     agregarCurso();
                     break;
                 }
-                case 2:
-                {
+                case 2: {
                     agregarRecursoACurso();
                     break;
                 }
-                case 3:
-                {
+                case 3: {
                     mostrarDatosCursos();
                     break;
                 }
-                case 4:
-                {
+                case 4: {
+                    eliminarCurso();
+                    break;
+                }
+                case 5: {
                     System.out.println("Adiós, que tenga un buen día");
                     break;
                 }
@@ -55,65 +51,66 @@ class Colegio
             System.out.println("\n=====================================\n");
         }
     }
-   
-    /********************************************************************************** */
+
+    /**
+     * ********************************************************************************
+     */
     //FUNCION DE MENU
-    private void mostrarMenu()
-    {
+    private void mostrarMenu() {
         System.out.println("\nSeleccione qué acción quiere realizar:\n");
         System.out.println("1- Agregar curso");
         System.out.println("2- Agregar recurso a un curso");
         System.out.println("3- Mostar datos de cursos");
-        System.out.println("4- salir");
+        System.out.println("4.- Eliminar curso");
+        System.out.println("5- salir");
         System.out.println("=====================================\n");
         System.out.println("Ingrese su opción: ");
     }
 
-    /********************************************************************************** */
+    /**
+     * ********************************************************************************
+     */
     //FUNCIONES PARA INICIALIZAR
-    public void inicializarSistema()
-    {
+    public void inicializarSistema() {
         Curso curso;
         RecursoDigital recursoEducativo;
-        
-        curso =  new Curso(1, 30, "Arthur Doyle", "1ro basico A");
+
+        curso = new Curso(1, 30, "Arthur Doyle", "1ro basico A");
         mapaCursos.put(curso.getCurso(), curso);
-        
+
         recursoEducativo = new RecursoDigital(10, "Kahoot", "Historia");
         curso.agregarRecurso(recursoEducativo);
-        
+
         recursoEducativo = new RecursoDigital(13, "YouTube", "Ciencias Naturales");
         curso.agregarRecurso(recursoEducativo);
-        
-        
-        curso =  new Curso(2, 30, "Paulo Coelho", "3ro Medio B");
+
+        curso = new Curso(2, 30, "Paulo Coelho", "3ro Medio B");
         mapaCursos.put(curso.getCurso(), curso);
-        
+
         recursoEducativo = new RecursoDigital(53, "YouTube", "Filosofia");
         curso.agregarRecurso(recursoEducativo);
-        
+
         recursoEducativo = new RecursoDigital(85, "PPTs", "Filosofia");
         curso.agregarRecurso(recursoEducativo);
-        
-        
-        curso =  new Curso(3, 30, "Paula Hawkins", "6to basico A");
+
+        curso = new Curso(3, 30, "Paula Hawkins", "6to basico A");
         mapaCursos.put(curso.getCurso(), curso);
-        
+
         recursoEducativo = new RecursoDigital(43, "Duolingo", "Ingles");
         curso.agregarRecurso(recursoEducativo);
-        
-        
-        curso =  new Curso(4, 30, "Abraham Stoker", "8vo basico A");
+
+        curso = new Curso(4, 30, "Abraham Stoker", "8vo basico A");
         mapaCursos.put(curso.getCurso(), curso);
-        
+
         recursoEducativo = new RecursoDigital(66, "Canva", "Artes Visuales");
         curso.agregarRecurso(recursoEducativo);
     }
-    
-    /********************************************************************************** */
+
+    /**
+     * ********************************************************************************
+     */
     //Funciones de agregar
-    public void agregarCurso() throws IOException
-    {
+    public void agregarCurso() throws IOException {
         int id, capCurso;
         String profJefe, nombreCurso;
         Curso curso;
@@ -130,20 +127,17 @@ class Colegio
         System.out.println("Ingrese el nombre del curso: ");
         nombreCurso = lector.readLine();
 
-        curso = new Curso (id, capCurso, profJefe, nombreCurso);
+        curso = new Curso(id, capCurso, profJefe, nombreCurso);
 
-        if (!mapaCursos.containsKey(nombreCurso))
-        {
+        if (!mapaCursos.containsKey(nombreCurso)) {
             mapaCursos.put(curso.getCurso(), curso);
-            System.out.println("\nSe ha ingresado el curso con exito");
-        }
-        else
+            System.out.println("\nSe ha ingresado el curso con éxito");
+        } else {
             System.out.println("\nALERTA: Ya existe un curso con el mismo nombre");
+        }
     }
 
-
-    public void agregarRecursoACurso() throws IOException
-    {   
+    public void agregarRecursoACurso() throws IOException {
         int idRecurso;
         String nombreCurso, nombreRecurso, asignatura;
         RecursoDigital recursoEducativo;
@@ -154,38 +148,35 @@ class Colegio
 
         curso = mapaCursos.get(nombreCurso);
 
-        if (curso != null)
-        {
+        if (curso != null) {
             System.out.println("Ingrese el ID del recurso digital: ");
             idRecurso = Integer.parseInt(lector.readLine());
-            
+
             System.out.println("Ingrese el nombre del recurso digital: ");
             nombreRecurso = lector.readLine();
-    
+
             System.out.println("Ingrese la asignatura donde se usara el recurso digital: ");
             asignatura = lector.readLine();
-    
+
             recursoEducativo = new RecursoDigital(idRecurso, nombreRecurso, asignatura);
 
             curso.agregarRecurso(recursoEducativo);
-        }
-        else
-        {
+        } else {
             System.out.println("No se ha podido encontrar el curso");
         }
     }
 
-    /********************************************************************************** */
+    /**
+     * ********************************************************************************
+     */
     //FUNCIONES DE MOSTRAR
-    public void mostrarDatosCursos()
-    {
-        ArrayList <RecursoDigital> recursosDigitales;
+    public void mostrarDatosCursos() {
+        ArrayList<RecursoDigital> recursosDigitales;
         RecursoDigital recursoActual;
 
         System.out.println("Cursos en el colegio " + nombreColegio + ":\n");
 
-        for (Map.Entry<String, Curso> entry : mapaCursos.entrySet())
-        {
+        for (Map.Entry<String, Curso> entry : mapaCursos.entrySet()) {
             Curso curso = entry.getValue();
             System.out.println("ID del Curso: " + curso.getId());
             System.out.println("Nombre del Curso: " + curso.getCurso());
@@ -195,8 +186,7 @@ class Colegio
 
             recursosDigitales = curso.getRecursosDigitales();
 
-            for (int i = 0; i < recursosDigitales.size(); i++)
-            {
+            for (int i = 0; i < recursosDigitales.size(); i++) {
                 recursoActual = recursosDigitales.get(i);
                 System.out.println("ID del Recurso: " + recursoActual.getId());
                 System.out.println("Nombre del Recurso: " + recursoActual.getRecurso());
@@ -206,30 +196,90 @@ class Colegio
         }
     }
 
-    /********************************************************************************** */
+    /**
+     * ********************************************************************************
+     */
+    //FUNCIONES DE ELIMINAR
+    public void eliminarCurso() throws IOException {
+        int opcion = 0;
+        int id;
+        String nombreCurso;
+
+        System.out.println("Indique de qué manera quiere encontrar el curso a eliminar");
+        System.out.println("Opciones: ");
+        System.out.println("1.- Nombre del curso");
+        System.out.println("2.- ID Asignado");
+        System.out.println("Ingrese opción: ");
+
+        opcion = Integer.parseInt(lector.readLine());
+
+        if (opcion == 1) {
+            System.out.println("Ingrese nombre del curso: ");
+            nombreCurso = lector.readLine();
+            eliminarCursoIngresado(nombreCurso);
+
+        } else if (opcion == 2) {
+            System.out.println("Ingrese id del curso: ");
+            id = Integer.parseInt(lector.readLine());
+            eliminarCursoIngresado(id);
+
+        }
+
+    }
+
+    private void eliminarCursoIngresado(String nombreCurso) {
+        Curso cursoAEliminar = mapaCursos.get(nombreCurso);
+        if (cursoAEliminar != null) {
+            mapaCursos.remove(nombreCurso);
+            System.out.println("Curso '" + nombreCurso + "' eliminado exitosamente.");
+        } else {
+            System.out.println("El curso '" + nombreCurso + "' no se encontró en el colegio.");
+        }
+
+    }
+
+    private void eliminarCursoIngresado(int id) {
+        Curso cursoAEliminar = null;
+
+        for (Map.Entry<String, Curso> entry : mapaCursos.entrySet()) {
+
+            if (entry.getValue().getId() == id) {
+                cursoAEliminar = entry.getValue();
+                break;
+            }
+        }
+
+        if (cursoAEliminar != null) {
+            mapaCursos.remove(cursoAEliminar.getCurso());
+            System.out.println("Curso con ID '" + id + "' eliminado exitosamente.");
+
+        } else {
+            System.out.println("No se encontró ningún curso con el ID '" + id + "'.");
+        }
+
+    }
+
+    /**
+     * ********************************************************************************
+     */
     //GETTERS y SETEERS
-    public Curso getCurso(String nombreCurso)
-    {
+    public Curso getCurso(String nombreCurso) {
         return mapaCursos.get(nombreCurso);
     }
 
-    public String getNombreColegio()
-    {
+    public String getNombreColegio() {
         return nombreColegio;
     }
 
-    public void setNombreColegio(String nombreColegio)
-    {
+    public void setNombreColegio(String nombreColegio) {
         this.nombreColegio = nombreColegio;
     }
 
-    public Map <String, Curso> getCursos()
-    {
+    public Map<String, Curso> getCursos() {
         return mapaCursos;
     }
 
-    public void setCursos(Map <String, Curso> mapaCursos)
-    {
+    public void setCursos(Map<String, Curso> mapaCursos) {
         this.mapaCursos = mapaCursos;
     }
 }
