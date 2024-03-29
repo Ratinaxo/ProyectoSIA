@@ -11,7 +11,6 @@ public class RecursoDigital
         this.asignatura = asignatura;
     }
 
-
     public int getId() {
         return id;
     }
