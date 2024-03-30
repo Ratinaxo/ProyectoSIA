@@ -1,4 +1,3 @@
-
 import java.util.*;
 import java.io.*;
 
@@ -111,9 +110,9 @@ class Colegio {
      */
     //Funciones de agregar
     public void agregarCurso() throws IOException {
-        int id, capCurso;
+        int id, capCurso, flagId = 0, flagCurso = 0, flagProf = 0;
         String profJefe, nombreCurso;
-        Curso curso;
+        Curso cursoActual, curso;
 
         System.out.println("Ingrese el ID del curso: ");
         id = Integer.parseInt(lector.readLine());
@@ -126,14 +125,40 @@ class Colegio {
 
         System.out.println("Ingrese el nombre del curso: ");
         nombreCurso = lector.readLine();
-
-        curso = new Curso(id, capCurso, profJefe, nombreCurso);
-
-        if (!mapaCursos.containsKey(nombreCurso)) {
+        
+        for (Map.Entry<String, Curso> entry : mapaCursos.entrySet())
+        {
+            cursoActual = entry.getValue();
+            
+            if (cursoActual.getId() == id)
+            {
+                flagId = 1;
+                break;
+            }
+            if (cursoActual.getCurso().equalsIgnoreCase(nombreCurso))
+            {
+                flagCurso = 1;
+            }
+            if (cursoActual.getProfJefe().equalsIgnoreCase(profJefe))
+            {
+                flagProf = 1;
+            }
+        }
+        
+        if (flagId == 1)
+            System.out.println("\nALERTA: Ya existe un curso con el mismo ID");
+        
+        else if (flagCurso == 1)
+            System.out.println("\nALERTA: Ya existe un curso con el mismo nombre");
+        
+        else if (flagProf == 1) 
+            System.out.println("\nALERTA: Ya existe un curso con el mismo profesor jefe");
+        
+        else
+        {
+            curso = new Curso(id, capCurso, profJefe, nombreCurso);
             mapaCursos.put(curso.getCurso(), curso);
             System.out.println("\nSe ha ingresado el curso con éxito");
-        } else {
-            System.out.println("\nALERTA: Ya existe un curso con el mismo nombre");
         }
     }
 
