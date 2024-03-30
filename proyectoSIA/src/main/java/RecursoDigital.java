@@ -1,37 +1,44 @@
-public class RecursoDigital
-{
-    int id;
-    String recurso;
-    String asignatura;
+public class RecursoDigital{
+    private Integer id;
+    private String nombre;
+    private String asignatura;
+    private int cant;
 
-    public RecursoDigital (int id, String recurso, String asignatura)
-    {
+    public RecursoDigital(Integer id, String nombre, int cant) {
         this.id = id;
-        this.recurso = recurso;
-        this.asignatura = asignatura;
+        this.nombre = nombre;
+        this.cant = cant;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getRecurso() {
-        return recurso;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setRecurso(String recurso) {
-        this.recurso = recurso;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getAsignatura() {
         return asignatura;
     }
 
-    public void setAsignnatura(String asignnatura) {
-        this.asignatura = asignnatura;
+    public void setAsignatura(String asignatura) {
+        this.asignatura = asignatura;
+    }
+
+    public int getCant() {
+        return cant;
+    }
+
+    public void setCant(int cant) {
+        this.cant = cant;
     }
 }

@@ -1,6 +1,8 @@
-public class ProyectoSIA {
+import java.io.*;
 
-    public static void main(String[] args) {
-        System.out.println("Hello!");
+public class ProyectoSIA {
+    public static void main(String[] args) throws IOException{
+        Colegio colegio = new Colegio();
+        colegio.mostrarMenu();
     }
 }

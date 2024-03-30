@@ -1,114 +1,47 @@
 import java.util.*;
-
-class Curso
-{
-    private int id;
-    private int capCurso;
+public class Curso {
     private String curso;
     private String profJefe;
-    private Estudiante[] estudiantes; 
-    private ArrayList <RecursoDigital> recursosDigitales;
+    private HashMap<Integer,RecursoDigital> recursosMapa;
 
-
-    public Curso(int id, int capCurso, String profJefe, String curso)
-    {
-        this.id = id;
+    public Curso(String curso, String profJefe){
         this.curso = curso;
         this.profJefe = profJefe;
-        this.capCurso = capCurso;
-        this.estudiantes = new Estudiante[capCurso];
-        this.recursosDigitales = new ArrayList<>();
+        recursosMapa = new HashMap<>();
     }
-
-
-    //AGREGAR
-    public void agregarRecurso(RecursoDigital recurso)
-    {
-        if (existeRecurso(recurso) != 1)
-        {
-            recursosDigitales.add(recurso);
-            System.out.println("\nSe ha ingresado el recurso digital con exito");
-        }
-        else
-            System.out.println("\nERROR: Ya existe este recurso para esta asignatura");
-    }
-    
-    public int existeRecurso(RecursoDigital recurso)
-    {   
-        for (int i = 0; i < recursosDigitales.size(); i++)
-        {
-            if (recursosDigitales.get(i).getId() == recurso.getId())
-            {
-                if (recursosDigitales.get(i).getRecurso().equals(recurso.getRecurso()))
-                {
-                    if (recursosDigitales.get(i).getAsignatura().equals(recurso.getAsignatura()))
-                    {
-                        return 1;
-                    }
-                } 
-            }
-        }
-        return 0;
-    }
-            
-    
-    //GETTERS Y SETTERS
-    public int getId() {
-        return id;
-    }
-
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
-    public int getCapCurso() {
-        return capCurso;
-    }
-
-
-    public void setCapCurso(int capCurso) {
-        this.capCurso = capCurso;
-    }
-
 
     public String getCurso() {
         return curso;
     }
 
-
     public void setCurso(String curso) {
         this.curso = curso;
     }
-
 
     public String getProfJefe() {
         return profJefe;
     }
 
-
     public void setProfJefe(String profJefe) {
         this.profJefe = profJefe;
     }
 
-
-    public Estudiante[] getEstudiantes() {
-        return estudiantes;
+    public HashMap<Integer, RecursoDigital> getRecursosMapa() {
+        return recursosMapa;
     }
 
-
-    public void setEstudiantes(Estudiante[] estudiantes) {
-        this.estudiantes = estudiantes;
+    public void setRecursosMapa(HashMap<Integer, RecursoDigital> recursosMapa) {
+        this.recursosMapa = recursosMapa;
     }
 
-
-    public ArrayList<RecursoDigital> getRecursosDigitales() {
-        return recursosDigitales;
+    public void agregarRecurso(String nombre, Integer id, int cant){
+        if(!recursosMapa.containsKey(id)){
+            RecursoDigital recurso = new RecursoDigital(id, nombre, cant);
+            recursosMapa.put(id, recurso);
+            System.out.println("Recurso digital agregado");
+        }else System.out.println("El recurso ya se encuentra en el curso");
     }
-
-
-    public void setRecursosDigitales(ArrayList<RecursoDigital> recursosDigitales) {
-        this.recursosDigitales = recursosDigitales;
+    public void mostrarReecursos(){
+        System.out.println(recursosMapa.values());
     }
 }
