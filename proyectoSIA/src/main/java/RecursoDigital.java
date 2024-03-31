@@ -2,12 +2,11 @@ public class RecursoDigital{
     private Integer id;
     private String nombre;
     private String asignatura;
-    private int cant;
 
-    public RecursoDigital(Integer id, String nombre, int cant) {
+    public RecursoDigital(Integer id, String nombre, String asignatura) {
         this.id = id;
         this.nombre = nombre;
-        this.cant = cant;
+        this.asignatura = asignatura;
     }
 
     public int getId() {
@@ -32,13 +31,5 @@ public class RecursoDigital{
 
     public void setAsignatura(String asignatura) {
         this.asignatura = asignatura;
-    }
-
-    public int getCant() {
-        return cant;
-    }
-
-    public void setCant(int cant) {
-        this.cant = cant;
     }
 }
