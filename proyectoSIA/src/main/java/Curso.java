@@ -61,4 +61,14 @@ public class Curso {
             System.out.println("Nombre: " + recurso.getNombre());
         }
     }
+    //Sobrecarga de metodo
+    public void mostrarRecursos(String asignatura){
+        RecursoDigital recurso;
+        for (int i = 0; i < listaIDRecursos.size(); i++){
+            recurso = recursosMapa.get(listaIDRecursos.get(i));
+            if (asignatura.equals(recurso.getAsignatura())){
+                System.out.println("Nombre: " + recurso.getNombre());
+            }
+        }
+    }
 }
