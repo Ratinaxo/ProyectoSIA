@@ -25,15 +25,17 @@ class Colegio {
         
         inicializarSistema();
         while(flag) {
-            String input;
-            int opcion;
+            String input, nomRecurso, nomAsignatura;
+            int opcion, ID;
             Curso curso;
             System.out.println("=================Se han inicializado datos================\n");
             System.out.println("\nSeleccione que accion quiere realizar:\n");
             System.out.println("1.- Mostrar cursos");
             System.out.println("2.- Mostrar datos de un curso");
-            System.out.println("3.-Agregar recursos a un curso");
-            System.out.println("4.- Salir");
+            System.out.println("3.- Agregar recursos a un curso");
+            System.out.println("4.- Modificar recurso a un curso");
+            System.out.println("5.- Eliminar recurso a un curso");
+            System.out.println("6.- Salir");
             System.out.println("=====================================\n");
             System.out.println("Ingrese su opcion: ");
             input = lector.readLine();
@@ -43,11 +45,12 @@ class Colegio {
                 case 1:
                     mostrarCursos();
                     break;
+
                 case 2:
                     System.out.println("Ingrese el curso");
                     input = lector.readLine();
                     curso = mapaCursos.get((String)input);
-                    System.out.println("Curso: " + curso.getCurso() + "Prof Jefe: " + curso.getProfJefe());
+                    System.out.println("Curso: " + curso.getCurso() + " - Prof Jefe: " + curso.getProfJefe());
                     System.out.println("Recursos del curso: ");
                     curso.mostrarRecursos();
                     break;
@@ -56,11 +59,11 @@ class Colegio {
                     System.out.println("Ingrese el curso");
                     input = lector.readLine();
                     System.out.println("Ingrese el nombre del recurso");
-                    String nomRecurso = (String)lector.readLine();
+                    nomRecurso = (String)lector.readLine();
                     System.out.println("Ingrese la asignatura (0 sino posee)");
-                    String nomAsignatura = (String)lector.readLine();
+                    nomAsignatura = (String)lector.readLine();
                     System.out.println("Ingrese el ID");
-                    int ID = Integer.parseInt(lector.readLine());
+                    ID = Integer.parseInt(lector.readLine());
                     
                     if (nomAsignatura.equals("0"))
                         (mapaCursos.get((String)input)).agregarRecurso(nomRecurso, ID);
@@ -68,7 +71,30 @@ class Colegio {
                         (mapaCursos.get((String)input)).agregarRecurso(nomRecurso, ID, nomAsignatura);
                     
                     break;
+
                 case 4:
+                    System.out.println("Ingrese el curso");
+                    input = lector.readLine();
+                    System.out.println("Ingrese el nuevo nombre del recurso");
+                    nomRecurso = (String)lector.readLine();
+                    System.out.println("Ingrese la nueva asignatura");
+                    nomAsignatura = (String)lector.readLine();
+                    System.out.println("Ingrese el ID del recurso a modificar");
+                    ID = Integer.parseInt(lector.readLine());
+
+                    modificarRecurso(input, ID, nomRecurso, nomAsignatura);
+                    break;
+
+                case 5:
+                    System.out.println("Ingrese el curso");
+                    input = lector.readLine();
+                    System.out.println("Ingrese el ID del recurso a eliminar");
+                    ID = Integer.parseInt(lector.readLine());
+
+                    eliminarRecurso(input, ID);
+                    break;
+
+                case 6:
                     flag = false;
                     break;
                 default:
@@ -117,5 +143,40 @@ class Colegio {
             cursos.add(curso);
             mapaCursos.put(curso.getCurso(),curso);
         }
+    }
+
+    public void modificarRecurso(String nomCurso, int idRecurso, String nvoNombreRecurso, String nvaAsignatura)
+    {
+        if (((Curso)mapaCursos.get((String)nomCurso)).modificarRecurso(idRecurso, nvoNombreRecurso, nvaAsignatura))
+        {
+            for (int i = 0; i < cursos.size(); i++)
+            {
+                if (((Curso)cursos.get(i)).getCurso().equals(nomCurso))
+                {
+                    ((Curso)cursos.get(i)).modificarRecurso(idRecurso, nvoNombreRecurso, nvaAsignatura);
+                    System.out.println("Recurso modificado con exito");
+                    return;
+                }
+            }
+        }
+        System.out.println("Recurso ingresado no disponible en el sistema");
+    }
+
+
+    public void eliminarRecurso(String nomCurso, int idRecurso)
+    {
+        if (((Curso)mapaCursos.get((String)nomCurso)).eliminarRecurso(idRecurso))
+        {
+            for (int i = 0; i < cursos.size(); i++)
+            {
+                if (((Curso)cursos.get(i)).getCurso().equals(nomCurso))
+                {
+                    ((Curso)cursos.get(i)).eliminarRecurso(idRecurso);
+                    System.out.println("Recurso eliminado con exito");  
+                    return;
+                }
+            }
+        }
+        System.out.println("No se ha podido eliminar el Recurso del sistema");
     }
 }
