@@ -1,4 +1,5 @@
 import java.util.*;
+
 public class Curso {
     private String curso;
     private String profJefe;
@@ -70,5 +71,39 @@ public class Curso {
                 System.out.println("Nombre: " + recurso.getNombre());
             }
         }
+    }
+
+    public boolean modificarRecurso(int idRecurso, String nvoNombreRecurso, String nvaAsignatura)
+    {
+        RecursoDigital recursoActual;
+
+        if (recursosMapa.containsKey(idRecurso))
+        {
+            recursoActual = recursosMapa.get(idRecurso);
+            recursoActual.setNombre(nvoNombreRecurso);
+            recursoActual.setAsignatura(nvaAsignatura);
+            
+            return true;
+        }
+        return false;
+    }
+
+    public boolean eliminarRecurso(int idRecurso)
+    {
+        if (recursosMapa.containsKey((idRecurso)))
+        {
+            recursosMapa.remove(idRecurso);
+
+            for (int i = 0; i < listaIDRecursos.size(); i++)
+            {
+                if (listaIDRecursos.get(i) == idRecurso)
+                {
+                    listaIDRecursos.remove(i);
+
+                    return true;  
+                }
+            }
+        }
+        return false;
     }
 }
