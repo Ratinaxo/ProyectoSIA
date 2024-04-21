@@ -103,13 +103,16 @@ class Colegio {
         }
     }
     
-    public void mostrarCursos(){
+    public String[] mostrarCursos(){
         if(!cursos.isEmpty()){
+            String[] cursos2 = new String[cursos.size()];
             for (int i = 0; i < cursos.size(); i++){
-                System.out.println("Curso: "+(cursos.get(i)).getCurso()+" Profesor Jefe: "+(cursos.get(i)).getProfJefe());            
+                cursos2[i] = cursos.get(i).getCurso();
             }
+            return cursos2;
         }
-        else System.out.println("No hay clases");
+        System.out.println("No hay clases");
+        return null;
     }
     
     public void inicializarSistema() {
@@ -145,7 +148,7 @@ class Colegio {
         }
     }
 
-    public void modificarRecurso(String nomCurso, int idRecurso, String nvoNombreRecurso, String nvaAsignatura)
+    public boolean modificarRecurso(String nomCurso, int idRecurso, String nvoNombreRecurso, String nvaAsignatura)
     {
         if (((Curso)mapaCursos.get((String)nomCurso)).modificarRecurso(idRecurso, nvoNombreRecurso, nvaAsignatura))
         {
@@ -154,16 +157,15 @@ class Colegio {
                 if (((Curso)cursos.get(i)).getCurso().equals(nomCurso))
                 {
                     ((Curso)cursos.get(i)).modificarRecurso(idRecurso, nvoNombreRecurso, nvaAsignatura);
-                    System.out.println("Recurso modificado con exito");
-                    return;
+                    return true;
                 }
             }
         }
-        System.out.println("Recurso ingresado no disponible en el sistema");
+        return false;
     }
 
 
-    public void eliminarRecurso(String nomCurso, int idRecurso)
+    public boolean eliminarRecurso(String nomCurso, int idRecurso)
     {
         if (((Curso)mapaCursos.get((String)nomCurso)).eliminarRecurso(idRecurso))
         {
@@ -172,11 +174,12 @@ class Colegio {
                 if (((Curso)cursos.get(i)).getCurso().equals(nomCurso))
                 {
                     ((Curso)cursos.get(i)).eliminarRecurso(idRecurso);
-                    System.out.println("Recurso eliminado con exito");  
-                    return;
+                    
+                    return true;
                 }
             }
         }
-        System.out.println("No se ha podido eliminar el Recurso del sistema");
+        
+        return false;
     }
 }

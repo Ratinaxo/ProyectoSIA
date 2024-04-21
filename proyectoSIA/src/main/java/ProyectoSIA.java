@@ -1,8 +1,8 @@
-import java.io.*;
-
 public class ProyectoSIA {
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args){
         Colegio colegio = new Colegio();
-        colegio.mostrarMenu();
+        VentanaInicial ventana = new VentanaInicial();
+        ControladorInicial controlador = new ControladorInicial(colegio, ventana);
+        //ControladorMostrarCursos controlador = new ControladorMostrarCursos(colegio.getCursos(), ventana);
     }
 }
