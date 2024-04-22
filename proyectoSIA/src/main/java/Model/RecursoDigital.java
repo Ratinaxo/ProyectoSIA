@@ -1,3 +1,5 @@
+package Model;
+
 public class RecursoDigital{
     private Integer id;
     private String nombre;

@@ -1,3 +1,9 @@
+package Controllers;
+
+import Model.Curso;
+import Views.VentanaModificarCursos;
+import Views.VentanaMostrarCursos;
+import Views.VentanaEditarCursos;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.*;
@@ -27,9 +33,11 @@ public class ControladorEditarCursos implements MouseListener{
         }
         vv.updateList(nomCursos);
         vv.setVisible(true);
+        
     }
     public void modificarCursos(){
-        
+        VentanaModificarCursos vv = new VentanaModificarCursos();
+        ControladorModificarCursos cc = new ControladorModificarCursos();
     }
     public void eliminarCursos(){
         
@@ -41,16 +49,16 @@ public class ControladorEditarCursos implements MouseListener{
         if (me.getSource() == ventana.getjButton1()){
             mostrarCursos();
             
-            controladorIni.showVentana();
         }else if (me.getSource() == ventana.getjButton2()){
             ventana.setVisible(false);
-            controladorIni.showVentana();
+            
         }else if (me.getSource() == ventana.getjButton3()){
             ventana.setVisible(false);
-            controladorIni.showVentana();
+            controladorIni.switchVentana();
+            
         }else if (me.getSource() == ventana.getjButton4()){
             ventana.setVisible(false);
-            controladorIni.showVentana();
+            controladorIni.switchVentana();
         }
     }
     

@@ -1,3 +1,5 @@
+package Views;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -142,9 +144,6 @@ public class VentanaInicial extends javax.swing.JFrame {
     }
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        //VentanaEditarCursos ventan = new VentanaEditarCursos();
-        //ventana.setVisible(true);
-        //this.setVisible(false);
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked

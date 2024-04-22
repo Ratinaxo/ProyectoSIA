@@ -1,3 +1,8 @@
+package Model;
+
+import Views.VentanaInicial;
+import Controllers.ControladorInicial;
+
 public class ProyectoSIA {
     public static void main(String[] args){
         Colegio colegio = new Colegio();

@@ -1,3 +1,9 @@
+package Controllers;
+
+import Model.Colegio;
+import Views.VentanaEditarRecursos;
+import Views.VentanaEditarCursos;
+import Views.VentanaInicial;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -16,25 +22,37 @@ public class ControladorInicial implements MouseListener{
     
     public void editarCursos(){
         VentanaEditarCursos ventana = new VentanaEditarCursos();
-        ControladorEditarCursos controlador;
-        controlador = new ControladorEditarCursos(colegio.getCursos(), ventana, this);
+        ControladorEditarCursos controlador = new ControladorEditarCursos(colegio.getCursos(), ventana, this);
     }
     public void editarRecursos(){
-        //VentanaEditarCursos ventana = new VentanaEditarCursos();
-        //ControladorEditarCursos controlador;
+        VentanaEditarRecursos ventana = new VentanaEditarRecursos();
+        ControladorEditarRecursos controlador = new ControladorEditarRecursos(colegio, ventana, this);
         //controlador = new ControladorEditarCursos(colegio.getCursos(), ventana);
+    }
+    
+    public void switchVentana(){
+        if (ventana.isVisible()){
+            ventana.setVisible(false);
+        }else{
+            ventana.setVisible(true);
+        }
     }
     
     public void showVentana(){
         ventana.setVisible(true);
+    }
+    public void notShowVentana(){
+        ventana.setVisible(false);
     }
     
     @Override
     public void mouseClicked (MouseEvent me) {
         if (me.getSource() == ventana.getjButton1()){
             editarCursos();
+            this.switchVentana();
         }else if (me.getSource() == ventana.getjButton2()){
             editarRecursos();
+            this.switchVentana();
         }else if (me.getSource() == ventana.getjButton3())
             System.exit(0);
     }

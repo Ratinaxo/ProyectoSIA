@@ -1,7 +1,9 @@
+package Model;
+
 import java.util.*;
 import java.io.*;
 
-class Colegio {
+public class Colegio {
     private HashMap<String,Curso> mapaCursos;
     private ArrayList<Curso> cursos;
     private final BufferedReader lector;
