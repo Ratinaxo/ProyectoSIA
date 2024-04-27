@@ -8,6 +8,7 @@ public class ProyectoSIA {
         Colegio colegio = new Colegio();
         VentanaInicial ventana = new VentanaInicial();
         ControladorInicial controlador = new ControladorInicial(colegio, ventana);
-        //ControladorMostrarCursos controlador = new ControladorMostrarCursos(colegio.getCursos(), ventana);
+        controlador.switchVentana();
+        
     }
 }

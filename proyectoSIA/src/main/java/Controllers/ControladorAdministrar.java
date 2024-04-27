@@ -1,20 +1,28 @@
 package Controllers;
 
+import Model.Colegio;
 import Model.Curso;
-import Views.VentanaModificarCursos;
+import java.util.HashMap;
+
+import Views.VentanaComprobarCurso;
 import Views.VentanaMostrarCursos;
-import Views.VentanaEditarCursos;
+import Views.VentanaAdministrar;
+import Views.VentanaNoExisteCurso;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.*;
 
-public class ControladorEditarCursos implements MouseListener{
+public class ControladorAdministrar implements MouseListener{
+    private HashMap<String,Curso> mapaCursos;
+    private Colegio colegio;
     private ArrayList<Curso> cursos;
-    private VentanaEditarCursos ventana;
+    private VentanaAdministrar ventana;
     private ControladorInicial controladorIni;
     
-    public ControladorEditarCursos (ArrayList cursos, VentanaEditarCursos ventana, ControladorInicial controladorIni){
-        this.cursos = cursos;
+    public ControladorAdministrar (Colegio colegio, VentanaAdministrar ventana, ControladorInicial controladorIni){
+        this.colegio = colegio;
+        this.mapaCursos = this.colegio.getMapaCursos();
+        this.cursos = this.colegio.getCursos();
         this.ventana = ventana;
         this.ventana.setListener(this);
         this.controladorIni = controladorIni;
@@ -32,16 +40,19 @@ public class ControladorEditarCursos implements MouseListener{
             nomCursos[i] = cursos.get(i).getCurso();
         }
         vv.updateList(nomCursos);
-        vv.setVisible(true);
+        vv.setVisible(true);   
+    }
+    
+    public void modificarRecursos(){//POSIBLE TRY-CATH
+        VentanaComprobarCurso vv = new VentanaComprobarCurso();
+        ControladorComprobarCurso cc = new ControladorComprobarCurso(colegio, vv);
         
     }
+    
     public void modificarCursos(){
-        VentanaModificarCursos vv = new VentanaModificarCursos();
-        ControladorModificarCursos cc = new ControladorModificarCursos();
-    }
-    public void eliminarCursos(){
         
     }
+    
     
     
     @Override
@@ -50,11 +61,10 @@ public class ControladorEditarCursos implements MouseListener{
             mostrarCursos();
             
         }else if (me.getSource() == ventana.getjButton2()){
-            ventana.setVisible(false);
+            modificarRecursos();
             
         }else if (me.getSource() == ventana.getjButton3()){
-            ventana.setVisible(false);
-            controladorIni.switchVentana();
+            modificarCursos();
             
         }else if (me.getSource() == ventana.getjButton4()){
             ventana.setVisible(false);

@@ -1,17 +1,18 @@
 package Model;
 
 import java.util.*;
-import java.io.*;
 
 public class Colegio {
     private HashMap<String,Curso> mapaCursos;
     private ArrayList<Curso> cursos;
-    private final BufferedReader lector;
 
     public Colegio(){
         cursos = new ArrayList<>();
         mapaCursos = new HashMap<>();
-        lector = new BufferedReader(new InputStreamReader(System.in));
+    }
+    
+    public HashMap<String, Curso> getMapaCursos() {
+        return mapaCursos;
     }
 
     public ArrayList<Curso> getCursos() {
@@ -20,89 +21,6 @@ public class Colegio {
 
     public void setCursos(ArrayList<Curso> cursos) {
         this.cursos = cursos;
-    }
-    
-    public void mostrarMenu() throws IOException{
-        boolean flag = true;
-        
-        inicializarSistema();
-        while(flag) {
-            String input, nomRecurso, nomAsignatura;
-            int opcion, ID;
-            Curso curso;
-            System.out.println("=================Se han inicializado datos================\n");
-            System.out.println("\nSeleccione que accion quiere realizar:\n");
-            System.out.println("1.- Mostrar cursos");
-            System.out.println("2.- Mostrar datos de un curso");
-            System.out.println("3.- Agregar recursos a un curso");
-            System.out.println("4.- Modificar recurso a un curso");
-            System.out.println("5.- Eliminar recurso a un curso");
-            System.out.println("6.- Salir");
-            System.out.println("=====================================\n");
-            System.out.println("Ingrese su opcion: ");
-            input = lector.readLine();
-            opcion = Integer.parseInt(input);
-            
-            switch (opcion) {
-                case 1:
-                    mostrarCursos();
-                    break;
-
-                case 2:
-                    System.out.println("Ingrese el curso");
-                    input = lector.readLine();
-                    curso = mapaCursos.get((String)input);
-                    System.out.println("Curso: " + curso.getCurso() + " - Prof Jefe: " + curso.getProfJefe());
-                    System.out.println("Recursos del curso: ");
-                    curso.mostrarRecursos();
-                    break;
-                    
-                case 3:
-                    System.out.println("Ingrese el curso");
-                    input = lector.readLine();
-                    System.out.println("Ingrese el nombre del recurso");
-                    nomRecurso = (String)lector.readLine();
-                    System.out.println("Ingrese la asignatura (0 sino posee)");
-                    nomAsignatura = (String)lector.readLine();
-                    System.out.println("Ingrese el ID");
-                    ID = Integer.parseInt(lector.readLine());
-                    
-                    if (nomAsignatura.equals("0"))
-                        (mapaCursos.get((String)input)).agregarRecurso(nomRecurso, ID);
-                    else
-                        (mapaCursos.get((String)input)).agregarRecurso(nomRecurso, ID, nomAsignatura);
-                    
-                    break;
-
-                case 4:
-                    System.out.println("Ingrese el curso");
-                    input = lector.readLine();
-                    System.out.println("Ingrese el nuevo nombre del recurso");
-                    nomRecurso = (String)lector.readLine();
-                    System.out.println("Ingrese la nueva asignatura");
-                    nomAsignatura = (String)lector.readLine();
-                    System.out.println("Ingrese el ID del recurso a modificar");
-                    ID = Integer.parseInt(lector.readLine());
-
-                    modificarRecurso(input, ID, nomRecurso, nomAsignatura);
-                    break;
-
-                case 5:
-                    System.out.println("Ingrese el curso");
-                    input = lector.readLine();
-                    System.out.println("Ingrese el ID del recurso a eliminar");
-                    ID = Integer.parseInt(lector.readLine());
-
-                    eliminarRecurso(input, ID);
-                    break;
-
-                case 6:
-                    flag = false;
-                    break;
-                default:
-                    break;
-            }
-        }
     }
     
     public String[] mostrarCursos(){
@@ -114,6 +32,11 @@ public class Colegio {
             return cursos2;
         }
         System.out.println("No hay clases");
+        return null;
+    }
+    
+    public Curso buscarCurso(String curso){
+        if (this.mapaCursos.containsKey(curso))return this.mapaCursos.get(curso);
         return null;
     }
     

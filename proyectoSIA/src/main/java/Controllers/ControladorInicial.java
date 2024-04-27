@@ -1,8 +1,7 @@
 package Controllers;
 
 import Model.Colegio;
-import Views.VentanaEditarRecursos;
-import Views.VentanaEditarCursos;
+import Views.VentanaAdministrar;
 import Views.VentanaInicial;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -20,14 +19,9 @@ public class ControladorInicial implements MouseListener{
     
     public void performAction(MouseEvent e){}
     
-    public void editarCursos(){
-        VentanaEditarCursos ventana = new VentanaEditarCursos();
-        ControladorEditarCursos controlador = new ControladorEditarCursos(colegio.getCursos(), ventana, this);
-    }
-    public void editarRecursos(){
-        VentanaEditarRecursos ventana = new VentanaEditarRecursos();
-        ControladorEditarRecursos controlador = new ControladorEditarRecursos(colegio, ventana, this);
-        //controlador = new ControladorEditarCursos(colegio.getCursos(), ventana);
+    public void admin(){
+        VentanaAdministrar ventana = new VentanaAdministrar();
+        ControladorAdministrar controlador = new ControladorAdministrar(colegio, ventana, this);
     }
     
     public void switchVentana(){
@@ -48,13 +42,12 @@ public class ControladorInicial implements MouseListener{
     @Override
     public void mouseClicked (MouseEvent me) {
         if (me.getSource() == ventana.getjButton1()){
-            editarCursos();
+            admin();
             this.switchVentana();
         }else if (me.getSource() == ventana.getjButton2()){
-            editarRecursos();
-            this.switchVentana();
-        }else if (me.getSource() == ventana.getjButton3())
             System.exit(0);
+            this.switchVentana();
+        }
     }
     
     @Override
