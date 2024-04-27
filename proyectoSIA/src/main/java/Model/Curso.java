@@ -39,6 +39,12 @@ public class Curso {
         this.recursosMapa = recursosMapa;
     }
 
+    public ArrayList<Integer> getListaIDRecursos() {
+        return listaIDRecursos;
+    }
+
+    
+    
     public void agregarRecurso(String nombre, Integer id){
         if(!recursosMapa.containsKey(id)){
             RecursoDigital recurso = new RecursoDigital(id, nombre, null);
@@ -57,22 +63,30 @@ public class Curso {
             System.out.println("Recurso digital agregado");
         }else System.out.println("El recurso ya se encuentra en el curso");
     }
-    public void mostrarRecursos(){
-        RecursoDigital recurso;
-        for (int i = 0; i < listaIDRecursos.size(); i++){
-            recurso = recursosMapa.get(listaIDRecursos.get(i));
-            System.out.println("Nombre: " + recurso.getNombre());
-        }
-    }
-    //Sobrecarga de metodo
-    public void mostrarRecursos(String asignatura){
-        RecursoDigital recurso;
-        for (int i = 0; i < listaIDRecursos.size(); i++){
-            recurso = recursosMapa.get(listaIDRecursos.get(i));
-            if (asignatura.equals(recurso.getAsignatura())){
-                System.out.println("Nombre: " + recurso.getNombre());
+    public String[] mostrarRecursos(){
+        String[] nomRecursos = new String[listaIDRecursos.size()];
+        if (!recursosMapa.isEmpty()){
+            for (int i = 0; i < listaIDRecursos.size(); i++){
+                nomRecursos[i] = (String)recursosMapa.get(listaIDRecursos.get(i)).getNombre();
             }
+            return nomRecursos;
         }
+        return null;
+    }
+    
+    //Sobrecarga de metodo
+    public String[] mostrarRecursos(String asignatura){
+        String[] nomRecursos = new String[listaIDRecursos.size()];
+        if (!recursosMapa.isEmpty()){
+            for (int i = 0; i < listaIDRecursos.size(); i++){
+
+                if (asignatura.equals(recursosMapa.get(listaIDRecursos.get(i)).getAsignatura())){
+                    nomRecursos[i] = (String)recursosMapa.get(listaIDRecursos.get(i)).getNombre();
+                }
+            }
+            return nomRecursos;
+        }
+        return null;
     }
 
     public boolean modificarRecurso(int idRecurso, String nvoNombreRecurso, String nvaAsignatura)

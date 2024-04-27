@@ -2,18 +2,15 @@ package Controllers;
 
 import Model.Colegio;
 import Model.Curso;
-import java.util.HashMap;
 
 import Views.VentanaComprobarCurso;
 import Views.VentanaMostrarCursos;
 import Views.VentanaAdministrar;
-import Views.VentanaNoExisteCurso;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.*;
 
 public class ControladorAdministrar implements MouseListener{
-    private HashMap<String,Curso> mapaCursos;
     private Colegio colegio;
     private ArrayList<Curso> cursos;
     private VentanaAdministrar ventana;
@@ -21,7 +18,6 @@ public class ControladorAdministrar implements MouseListener{
     
     public ControladorAdministrar (Colegio colegio, VentanaAdministrar ventana, ControladorInicial controladorIni){
         this.colegio = colegio;
-        this.mapaCursos = this.colegio.getMapaCursos();
         this.cursos = this.colegio.getCursos();
         this.ventana = ventana;
         this.ventana.setListener(this);
@@ -49,9 +45,6 @@ public class ControladorAdministrar implements MouseListener{
         
     }
     
-    public void modificarCursos(){
-        
-    }
     
     
     
@@ -64,7 +57,6 @@ public class ControladorAdministrar implements MouseListener{
             modificarRecursos();
             
         }else if (me.getSource() == ventana.getjButton3()){
-            modificarCursos();
             
         }else if (me.getSource() == ventana.getjButton4()){
             ventana.setVisible(false);

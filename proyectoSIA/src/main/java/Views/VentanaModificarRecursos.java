@@ -4,6 +4,8 @@
  */
 package Views;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author ricar
@@ -27,31 +29,51 @@ public class VentanaModificarRecursos extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Mostrar recursos");
+
+        jButton2.setText("Agregar recursos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addComponent(jButton1)
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addGap(135, 135, 135)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(102, 102, 102)
+                .addGap(49, 49, 49)
                 .addComponent(jButton1)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(jButton2)
+                .addContainerGap(168, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public JButton getjButton1() {
+        return jButton1;
+    }
+    public JButton getjButton2() {
+        return jButton2;
+    }
+    
+    public void setListener(java.awt.event.MouseListener listener){
+        jButton1.addMouseListener(listener);
+        jButton2.addMouseListener(listener);
+        //jButton3.addMouseListener(listener);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -89,5 +111,6 @@ public class VentanaModificarRecursos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }
