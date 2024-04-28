@@ -50,7 +50,14 @@ public class ControladorInicial implements MouseListener{
             this.switchVentana();
             
         }else if (me.getSource() == ventana.getjButton2()){
-            
+            try 
+            {
+                colegio.realizarReporte();
+            }
+            catch (IOException e)
+            {
+                ventana.mostrarMensaje("Error al realizar reporte");
+            }
         
         }else if (me.getSource() == ventana.getjButton3()){
             System.exit(0);

@@ -142,4 +142,62 @@ public class Colegio {
         
         return false;
     }
+    
+
+    public void realizarReporte() throws IOException
+    {
+        try (BufferedWriter escritor = new BufferedWriter(new FileWriter("src//main//java//Archivos//Reporte.txt")))
+        {
+            if (!cursos.isEmpty())
+            {
+                escritor.write("Existe una cantidad de " + cursos.size() + " cursos en este establecimiento\n\n");
+                escritor.write("Detalles de establecimiento:\n\n");
+
+                for (int i = 0; i < cursos.size(); i++)
+                {
+                    Curso curso = cursos.get(i);
+                    String formato = escribirReporte(curso);
+                    escritor.write(formato);
+                }
+            }
+        } catch (IOException e) {
+            throw e;
+        }
+    }
+
+    
+    private String escribirReporte(Curso curso)
+    {
+        StringBuilder reporte = new StringBuilder();
+
+        reporte.append("Curso: ").append(curso.getCurso()).append("\n");
+        reporte.append("Profesor jefe: ").append(curso.getProfJefe()).append("\n\n");
+
+        int id;
+
+        for (int i = 0; i < curso.getListaIDRecursos().size(); i++)
+        {
+            id = curso.getListaIDRecursos().get(i);
+            RecursoDigital recurso = curso.getRecursosMapa().get(id);
+
+            reporte.append("Recurso/Asignatura: ").append(recurso.getNombre()).append(" / ");
+            if (recurso.getAsignatura() != null) {
+                reporte.append(recurso.getAsignatura());
+            }
+            else
+            {
+                reporte.append("N/A");
+            }
+            reporte.append("\n");
+        }
+
+        if (curso.getListaIDRecursos().isEmpty())
+        {
+            reporte.append("Este curso no tiene recursos digitales asociados.\n\n");
+        }
+
+        reporte.append("\n=======================================\n\n");
+
+        return reporte.toString();
+    }
 }
