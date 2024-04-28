@@ -1,23 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Views;
 
-import javax.swing.JButton;
-import javax.swing.JTextField;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
-/**
- *
- * @author ricar
- */
-public class VentanaComprobarCurso extends javax.swing.JFrame {
+
+public class VentanaNoExisteRecurso extends javax.swing.JFrame {
 
     /**
-     * Creates new form VentanaComprobarCurso
+     * Creates new form VentanaNoExisteRecurso
      */
-    public VentanaComprobarCurso() {
+    public VentanaNoExisteRecurso() {
         initComponents();
+        Toolkit toolKit = getToolkit();
+	Dimension size = toolKit.getScreenSize();
+	setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
     }
 
     /**
@@ -30,14 +26,19 @@ public class VentanaComprobarCurso extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Ingrese el curso:");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("Este recurso no existe!");
 
-        jButton1.setText("Comprobar");
+        jButton1.setText("Aceptar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -46,42 +47,31 @@ public class VentanaComprobarCurso extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel1)
-                        .addGap(27, 27, 27)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(87, 87, 87)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
+                        .addGap(123, 123, 123)
                         .addComponent(jButton1)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel1)
+                .addGap(28, 28, 28)
                 .addComponent(jButton1)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public JButton getjButton1() {
-        return jButton1;
-    }
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1MouseClicked
 
-    public String getjTextField1() {
-        return jTextField1.getText();
-    }
-
-    public void setListener(java.awt.event.MouseListener listener){
-        jButton1.addMouseListener(listener);
-    }
-    
     /**
      * @param args the command line arguments
      */
@@ -99,20 +89,20 @@ public class VentanaComprobarCurso extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaComprobarCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaNoExisteRecurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaComprobarCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaNoExisteRecurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaComprobarCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaNoExisteRecurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaComprobarCurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaNoExisteRecurso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaComprobarCurso().setVisible(true);
+                new VentanaNoExisteRecurso().setVisible(true);
             }
         });
     }
@@ -120,6 +110,5 @@ public class VentanaComprobarCurso extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

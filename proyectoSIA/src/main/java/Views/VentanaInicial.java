@@ -1,5 +1,7 @@
 package Views;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -11,6 +13,9 @@ public class VentanaInicial extends javax.swing.JFrame {
     public VentanaInicial() {
         initComponents();
         this.setTitle("Recursos digitales");
+        Toolkit toolKit = getToolkit();
+	Dimension size = toolKit.getScreenSize();
+	setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
     }
 
     /** 

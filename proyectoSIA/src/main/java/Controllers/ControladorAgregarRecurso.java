@@ -9,9 +9,9 @@ public class ControladorAgregarRecurso implements MouseListener{
     Curso curso;
     VentanaAgregarRecurso ventana;
 
-    public ControladorAgregarRecurso(Curso curso, VentanaAgregarRecurso ventana){
+    public ControladorAgregarRecurso(Curso curso){
         this.curso = curso;
-        this.ventana = ventana;
+        this.ventana = new VentanaAgregarRecurso();
         this.ventana.setListener(this);
         this.ventana.setVisible(true);
     }

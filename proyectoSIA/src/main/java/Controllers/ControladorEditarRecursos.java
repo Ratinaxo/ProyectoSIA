@@ -4,17 +4,18 @@ import java.awt.event.*;
 import java.util.*;
 
 import Model.Curso;
-import Views.VentanaModificarRecursos;
+import Views.VentanaEditarRecursos;
 import Views.VentanaListaRecursos;
-import Views.VentanaAgregarRecurso;
+import Views.VentanaBuscarRecurso;
 
-public class ControladorModificarRecursos implements MouseListener{
+public class ControladorEditarRecursos implements MouseListener{
     Curso curso;
-    VentanaModificarRecursos ventana;
-    
-    public ControladorModificarRecursos(Curso curso, VentanaModificarRecursos ventana){
+    VentanaEditarRecursos ventana;
+    VentanaBuscarRecurso ventanaBusq;
+    public ControladorEditarRecursos(Curso curso, VentanaEditarRecursos ventana){
         this.curso = curso;
         this.ventana = ventana;
+        this.ventanaBusq = new VentanaBuscarRecurso();
         this.ventana.setListener(this);
         this.ventana.setVisible(true);
     }
@@ -28,13 +29,17 @@ public class ControladorModificarRecursos implements MouseListener{
     }
     
     public void agregarRecursos() {
-        VentanaAgregarRecurso vv = new VentanaAgregarRecurso();
-        ControladorAgregarRecurso cc = new ControladorAgregarRecurso(curso, vv);
+        ControladorAgregarRecurso cc = new ControladorAgregarRecurso(curso);
     }
         
-    public void editarRecursos() {}
+    public void modificarRecurso() {
+        
+        ControladorModificarRecurso cc = new ControladorModificarRecurso(curso, ventanaBusq);
+    }
     
-    public void eliminarRecursos() {}
+    public void eliminarRecursos() {
+        ControladorEliminarRecurso cc = new ControladorEliminarRecurso(curso, ventanaBusq);
+    }
     
     @Override
     public void mouseClicked (MouseEvent me) {
@@ -44,13 +49,12 @@ public class ControladorModificarRecursos implements MouseListener{
         }else if (me.getSource() == ventana.getjButton2()){
             agregarRecursos();
             
-        }/*else if (me.getSource() == ventana.getjButton3()){
-            modificarCursos();
+        }else if (me.getSource() == ventana.getjButton3()){
+            modificarRecurso();
             
         }else if (me.getSource() == ventana.getjButton4()){
-            ventana.setVisible(false);
-            controladorIni.switchVentana();
-        }*/
+            eliminarRecursos();
+        }
     }
     @Override
     public void mousePressed(MouseEvent me) {

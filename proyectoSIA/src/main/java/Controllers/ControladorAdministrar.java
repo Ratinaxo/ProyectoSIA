@@ -3,7 +3,7 @@ package Controllers;
 import Model.Colegio;
 import Model.Curso;
 
-import Views.VentanaComprobarCurso;
+import Views.VentanaBuscarCurso;
 import Views.VentanaMostrarCursos;
 import Views.VentanaAdministrar;
 import java.awt.event.MouseEvent;
@@ -40,8 +40,8 @@ public class ControladorAdministrar implements MouseListener{
     }
     
     public void modificarRecursos(){//POSIBLE TRY-CATH
-        VentanaComprobarCurso vv = new VentanaComprobarCurso();
-        ControladorComprobarCurso cc = new ControladorComprobarCurso(colegio, vv);
+        VentanaBuscarCurso vv = new VentanaBuscarCurso();
+        ControladorBuscarCurso cc = new ControladorBuscarCurso(colegio, vv);
         
     }
     

@@ -4,6 +4,8 @@
  */
 package Views;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -18,6 +20,9 @@ public class VentanaBuscarPorAsignatura extends javax.swing.JFrame {
      */
     public VentanaBuscarPorAsignatura() {
         initComponents();
+        Toolkit toolKit = getToolkit();
+	Dimension size = toolKit.getScreenSize();
+	setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
     }
 
     /**
@@ -35,7 +40,7 @@ public class VentanaBuscarPorAsignatura extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Ingrese asignatura para mostrar recursos de esta:");

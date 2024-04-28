@@ -1,5 +1,7 @@
 package Views;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JButton;
 
 public class VentanaAgregarRecurso extends javax.swing.JFrame {
@@ -9,6 +11,9 @@ public class VentanaAgregarRecurso extends javax.swing.JFrame {
      */
     public VentanaAgregarRecurso() {
         initComponents();
+        Toolkit toolKit = getToolkit();
+	Dimension size = toolKit.getScreenSize();
+	setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
     }
 
     /**
@@ -29,7 +34,7 @@ public class VentanaAgregarRecurso extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Nombre del recurso:");
 

@@ -1,5 +1,7 @@
 package Views;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JButton;
 
 public class VentanaListaRecursos extends javax.swing.JFrame {
@@ -9,6 +11,9 @@ public class VentanaListaRecursos extends javax.swing.JFrame {
      */
     public VentanaListaRecursos() {
         initComponents();
+        Toolkit toolKit = getToolkit();
+	Dimension size = toolKit.getScreenSize();
+	setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
     }
 
     /**
@@ -26,7 +31,7 @@ public class VentanaListaRecursos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };

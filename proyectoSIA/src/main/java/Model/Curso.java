@@ -97,7 +97,9 @@ public class Curso {
         {
             recursoActual = recursosMapa.get(idRecurso);
             recursoActual.setNombre(nvoNombreRecurso);
-            recursoActual.setAsignatura(nvaAsignatura);
+            if (!nvaAsignatura.equals("")){
+                recursoActual.setAsignatura(nvaAsignatura);
+            }
             
             return true;
         }
@@ -122,4 +124,8 @@ public class Curso {
         }
         return false;
     }
+    public boolean buscarRecursoID(int idN){
+        return (recursosMapa.containsKey(idN));
+    }
+           
 }
