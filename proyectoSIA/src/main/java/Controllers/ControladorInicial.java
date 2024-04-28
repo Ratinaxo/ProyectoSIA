@@ -41,19 +41,18 @@ public class ControladorInicial implements MouseListener{
         }
     }
     
-    public void showVentana(){
-        ventana.setVisible(true);
-    }
-    public void notShowVentana(){
-        ventana.setVisible(false);
-    }
+    
     
     @Override
     public void mouseClicked (MouseEvent me) {
         if (me.getSource() == ventana.getjButton1()){
             admin();
             this.switchVentana();
+            
         }else if (me.getSource() == ventana.getjButton2()){
+            
+        
+        }else if (me.getSource() == ventana.getjButton3()){
             System.exit(0);
             this.switchVentana();
         }
