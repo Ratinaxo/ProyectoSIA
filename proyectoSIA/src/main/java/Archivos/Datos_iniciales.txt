@@ -1,0 +1,16 @@
+1A,Juan,Aula virtual,
+1B,Jose,Correo electrónico,Lenguaje
+2A,Maria,Herramientas Adobe,Lenguaje
+2B,Carlos,Herramientas Office,Historia
+3A,Laura,Biblioteca virtual,Lenguaje 
+3B,Pedro,Herramientas de videoconferencia,
+4A,Ana,Almacenamiento en la nube,Matematicas
+4B,Luis,Aula virtual,
+5A,Sofia,Correo electrónico,
+5B,Diego,Herramientas Adobe,Filosofia
+6A,Elena,Herramientas Office,Filosofia
+6B,Pablo,Biblioteca virtual,Historia
+7A,Carmen,Herramientas de videoconferencia,
+7B,Andres,Almacenamiento en la nube,Ciencias
+8A,Lucia,Aula virtual,Matematicas
+8B,Doroty,Correo electrónico,Matematicas

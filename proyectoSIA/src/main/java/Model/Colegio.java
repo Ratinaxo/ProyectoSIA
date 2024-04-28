@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.*;
+import java.io.*;
 
 public class Colegio {
     private HashMap<String,Curso> mapaCursos;
@@ -40,36 +41,70 @@ public class Colegio {
         return null;
     }
     
-    public void inicializarSistema() {
-        Curso curso;
-        RecursoDigital recurso;
-        ArrayList listaCursos, listaRecursos;
-        String[] nombreCursos = {"1A","1B","2A","2B","3A","3B","4A","4B","5A","5B",
-            "6A","6B","7A","7B","8A","8B"};
-        String[] nombreProfes = {"Juan", "Jose", "Maria", "Carlos", "Laura", "Pedro", 
-           "Ana", "Luis", "Sofia", "Diego", "Elena", "Pablo", "Carmen", "Andres", 
-           "Lucia","Doroty"};
-       
-        String[] nombreRecursos = {"Aula virtual", "Correo electrónico", 
-          "Herramientas Adobe", "Herramientas Office", 
-          "Biblioteca virtual", "Herramientas de videoconferencia", 
-          "Almacenamiento en la nube"};
-        
-        listaCursos = new ArrayList<>();
-        listaRecursos = new ArrayList<>();
-        for (int i = 0; i < nombreCursos.length; i++){
-            listaCursos.add(nombreCursos[i]);
+    public void inicializarSistema() throws IOException
+    {
+        Curso curso, auxCurso;
+        ArrayList<String> listaCursos = new ArrayList<>();
+        ArrayList<String> listaRecursos = new ArrayList<>();
+        ArrayList<String> listaProfes = new ArrayList<>();
+        ArrayList<String> listaAsignaturas = new ArrayList<>();
+    
+        try (BufferedReader lector = new BufferedReader(new FileReader("src//main//java//Archivos//Datos_iniciales.txt")))
+        {
+            String linea;
+            while ((linea = lector.readLine()) != null)
+            {
+                String[] partes = linea.split(",");
+                listaCursos.add(partes[0]);
+                listaProfes.add(partes[1]);
+                listaRecursos.add(partes[2]);
+
+                if (partes.length > 3)
+                {
+                    listaAsignaturas.add(partes[3]);
+                }
+                else
+                {
+                    listaAsignaturas.add(null);
+                }
+            }
         }
-        for (int i = 0; i < nombreRecursos.length; i++){
-            listaRecursos.add(nombreRecursos[i]);
+        catch (IOException e)
+        {
+            throw e;
         }
-        int i = 0;
-        while(listaRecursos.size() != i){
-            curso = new Curso((String)listaCursos.get(i), nombreProfes[i]);
-            curso.agregarRecurso((String)listaRecursos.get(i), i);
-            i++;
-            cursos.add(curso);
-            mapaCursos.put(curso.getCurso(),curso);
+    
+        for (int i = 0; i < listaCursos.size(); i++)
+        {
+            curso = new Curso(listaCursos.get(i), listaProfes.get(i));
+            
+            if (!mapaCursos.containsKey(curso.getCurso()))
+            {
+                if (listaAsignaturas.get(i) != null)
+                {
+                    curso.agregarRecurso(listaRecursos.get(i), i, listaAsignaturas.get(i));
+                }
+                else 
+                {
+                    curso.agregarRecurso(listaRecursos.get(i), i);
+                }
+                
+                mapaCursos.put(curso.getCurso(), curso);
+                cursos.add(curso);
+            }
+            else
+            {
+                auxCurso = mapaCursos.get(curso.getCurso());
+                
+                if (listaAsignaturas.get(i) != null)
+                {
+                    auxCurso.agregarRecurso(listaRecursos.get(i), i, listaAsignaturas.get(i));
+                }
+                else 
+                {
+                    auxCurso.agregarRecurso(listaRecursos.get(i), i);
+                }
+            }
         }
     }
 

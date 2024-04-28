@@ -2,6 +2,7 @@ package Controllers;
 
 import Model.Colegio;
 import Model.Curso;
+import Model.RecursoDigital;
 
 import Views.VentanaBuscarCurso;
 import Views.VentanaMostrarCursos;
@@ -9,6 +10,8 @@ import Views.VentanaAdministrar;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.*;
+
+import java.io.*;
 
 public class ControladorAdministrar implements MouseListener{
     private Colegio colegio;
@@ -45,7 +48,47 @@ public class ControladorAdministrar implements MouseListener{
         
     }
     
-    
+    public void guardarEnArchivo()
+    {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src//main//java//Archivos//Datos_iniciales.txt"))) {
+            if (!cursos.isEmpty()) {
+                for (int i = 0; i < cursos.size(); i++) {
+                    Curso curso = cursos.get(i);
+                    String formatoCurso = formatoCurso(curso);
+                    writer.write(formatoCurso);
+                }
+            }
+        } catch (IOException e) {
+            ventana.mostrarMensaje("El guardado de datos ha fallado");
+        }
+    }
+
+    private String formatoCurso(Curso curso)
+    {
+        StringBuilder sb = new StringBuilder();
+        RecursoDigital recurso;
+        ArrayList<Integer> IdsRecursos = curso.getListaIDRecursos();
+        HashMap<Integer,RecursoDigital> recursos = curso.getRecursosMapa();
+        
+
+        for (int i = 0; i < IdsRecursos.size(); i++)
+        {
+            recurso = recursos.get(IdsRecursos.get(i));
+
+
+            sb.append(curso.getCurso()).append(",");
+            sb.append(curso.getProfJefe()).append(",");
+            sb.append(recurso.getNombre()).append(",");
+
+            if (recurso.getAsignatura() != null) 
+            {
+                sb.append(recurso.getAsignatura());
+            }
+            sb.append("\n");
+        }
+
+        return sb.toString();
+    }
     
     
     @Override
@@ -61,6 +104,8 @@ public class ControladorAdministrar implements MouseListener{
         }else if (me.getSource() == ventana.getjButton4()){
             ventana.setVisible(false);
             controladorIni.switchVentana();
+        }else if (me.getSource() == ventana.getjButton5()){
+            guardarEnArchivo();
         }
     }
     

@@ -95,6 +95,14 @@ public class VentanaListaRecursos extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1MouseClicked
 
+    
+    public void displayMessage(String message) {
+        jLabel1.setText(message);
+        jScrollPane1.setVisible(false);
+        jList1.setVisible(false);
+        this.setVisible(true);
+    }
+    
     public void updateList(String[] list){
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = list;

@@ -21,11 +21,7 @@ public class ControladorEditarRecursos implements MouseListener{
     }
     
     public void mostrarRecursos() {
-        if (curso.mostrarRecursos() != null){ 
             ControladorMostrarRecursos cc = new ControladorMostrarRecursos(curso);
-            
-        }
-        
     }
     
     public void agregarRecursos() {

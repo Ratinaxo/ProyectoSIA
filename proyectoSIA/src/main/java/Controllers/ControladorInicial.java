@@ -1,5 +1,7 @@
 package Controllers;
 
+import java.io.IOException;
+
 import Model.Colegio;
 import Views.VentanaAdministrar;
 import Views.VentanaInicial;
@@ -11,10 +13,17 @@ public class ControladorInicial implements MouseListener{
     private VentanaInicial ventana;
     
     public ControladorInicial(Colegio colegio, VentanaInicial ventana){
-        this.colegio = colegio;
-        this.colegio.inicializarSistema();
-        this.ventana = ventana;
-        this.ventana.setListener(this);
+        try
+        {
+            this.colegio = colegio;
+            this.colegio.inicializarSistema();
+            this.ventana = ventana;
+            this.ventana.setListener(this);
+        }
+        catch (IOException e)
+        {
+            ventana.mostrarMensaje("Error al inicializar el sistema");
+        }
     }
     
     public void performAction(MouseEvent e){}

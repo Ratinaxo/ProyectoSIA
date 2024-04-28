@@ -1,5 +1,8 @@
 package Model;
 
+import Exceptions.ExceptionAsignatura;
+import Exceptions.ExcepcionMostrarRecursos;
+
 import java.util.*;
 
 public class Curso {
@@ -63,30 +66,39 @@ public class Curso {
             System.out.println("Recurso digital agregado");
         }else System.out.println("El recurso ya se encuentra en el curso");
     }
-    public String[] mostrarRecursos(){
+    
+    public String[] mostrarRecursos() throws ExcepcionMostrarRecursos {
         String[] nomRecursos = new String[listaIDRecursos.size()];
+        int cont = 0;
+        
         if (!recursosMapa.isEmpty()){
             for (int i = 0; i < listaIDRecursos.size(); i++){
                 nomRecursos[i] = (String)recursosMapa.get(listaIDRecursos.get(i)).getNombre();
+                cont++;
             }
-            return nomRecursos;
+            if (cont != 0)
+                return nomRecursos;
         }
-        return null;
+        throw new ExcepcionMostrarRecursos();
     }
     
     //Sobrecarga de metodo
-    public String[] mostrarRecursos(String asignatura){
+    public String[] mostrarRecursos(String asignatura) throws ExceptionAsignatura{
         String[] nomRecursos = new String[listaIDRecursos.size()];
+        int cont = 0;
+        
         if (!recursosMapa.isEmpty()){
             for (int i = 0; i < listaIDRecursos.size(); i++){
 
                 if (asignatura.equals(recursosMapa.get(listaIDRecursos.get(i)).getAsignatura())){
                     nomRecursos[i] = (String)recursosMapa.get(listaIDRecursos.get(i)).getNombre();
+                    cont++;
                 }
             }
-            return nomRecursos;
+            if (cont != 0)
+                return nomRecursos;
         }
-        return null;
+        throw new ExceptionAsignatura();
     }
 
     public boolean modificarRecurso(int idRecurso, String nvoNombreRecurso, String nvaAsignatura)

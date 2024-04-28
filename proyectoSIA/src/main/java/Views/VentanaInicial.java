@@ -1,5 +1,7 @@
 package Views;
 
+import javax.swing.JOptionPane;
+
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JButton;
@@ -93,6 +95,12 @@ public class VentanaInicial extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1MouseClicked
 
+    
+        public void mostrarMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
