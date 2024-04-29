@@ -143,6 +143,7 @@ public class Colegio {
         return false;
     }
     
+
     public void realizarReporte() throws IOException
     {
         try (BufferedWriter escritor = new BufferedWriter(new FileWriter("src//main//java//Archivos//Reporte.txt")))
@@ -199,5 +200,8 @@ public class Colegio {
 
         return reporte.toString();
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> adb11db267df7cbc6a2ffac1ea85fcb4d6e3ab9d
 }
