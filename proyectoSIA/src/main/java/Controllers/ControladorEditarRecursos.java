@@ -30,7 +30,7 @@ public class ControladorEditarRecursos implements MouseListener{
         
     public void modificarRecurso() {
         
-        ControladorModificarRecurso cc = new ControladorModificarRecurso(curso, ventanaBusq);
+        ControladorModificarRecurso cc = new ControladorModificarRecurso(curso);
     }
     
     public void eliminarRecursos() {

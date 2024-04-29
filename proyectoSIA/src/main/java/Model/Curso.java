@@ -101,8 +101,7 @@ public class Curso {
         throw new ExceptionAsignatura();
     }
 
-    public boolean modificarRecurso(int idRecurso, String nvoNombreRecurso, String nvaAsignatura)
-    {
+    public boolean modificarRecurso(int idRecurso, String nvoNombreRecurso, String nvaAsignatura) {
         RecursoDigital recursoActual;
 
         if (recursosMapa.containsKey(idRecurso))
@@ -118,8 +117,7 @@ public class Curso {
         return false;
     }
 
-    public boolean eliminarRecurso(int idRecurso)
-    {
+    public boolean eliminarRecurso(int idRecurso) {
         if (recursosMapa.containsKey((idRecurso)))
         {
             recursosMapa.remove(idRecurso);
@@ -136,6 +134,7 @@ public class Curso {
         }
         return false;
     }
+    
     public boolean buscarRecursoID(int idN){
         return (recursosMapa.containsKey(idN));
     }

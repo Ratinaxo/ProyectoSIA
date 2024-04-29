@@ -9,33 +9,27 @@ import Views.VentanaNoExisteRecurso;
 
 public class ControladorEliminarRecurso implements MouseListener{
     private Curso curso;
-    private int id;
     private VentanaEliminarRecurso ventana;
-    private VentanaBuscarRecurso ventanaBusq;
-    
+    private int id;
+
     public ControladorEliminarRecurso(Curso curso, VentanaBuscarRecurso ventanaBusq){
         this.curso = curso;
-        this.ventanaBusq = ventanaBusq;
-        this.ventanaBusq.setListener(this);
         this.ventana = new VentanaEliminarRecurso();
+        this.ventana.setVisible(true);
         this.ventana.setListener(this);
     }
     
     public void eliminarRecurso(){
-        if (curso.buscarRecursoID(id)){
-            curso.eliminarRecurso(id);
+        if (curso.buscarRecursoID(Integer.parseInt(ventana.getjTextField1()))){
+            curso.eliminarRecurso(Integer.parseInt(ventana.getjTextField1()));
             this.ventana.setVisible(false);
-        }else{
-            new VentanaNoExisteRecurso().setVisible(true);
-        }
+        }else new VentanaNoExisteRecurso().setVisible(true);
     }
     
     @Override
     public void mouseClicked(MouseEvent me){
         if(me.getSource() == ventana.getjButton1()){
             eliminarRecurso();
-        }else if (me.getSource() == ventanaBusq.getjButton1()){
-            this.id = Integer.parseInt(ventanaBusq.getjTextField1());
         }
     }
     

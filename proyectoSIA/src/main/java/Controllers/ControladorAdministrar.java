@@ -100,7 +100,8 @@ public class ControladorAdministrar implements MouseListener{
             modificarRecursos();
             
         }else if (me.getSource() == ventana.getjButton3()){
-            
+            ventana.setVisible(false);
+            controladorIni.switchVentana();
         }else if (me.getSource() == ventana.getjButton4()){
             ventana.setVisible(false);
             controladorIni.switchVentana();

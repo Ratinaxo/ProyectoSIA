@@ -3,9 +3,7 @@ package Views;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JButton;
-
 public class VentanaModificarRecurso extends javax.swing.JFrame {
-
     /**
      * Creates new form VentanaModificarRecurso
      */
@@ -25,33 +23,37 @@ public class VentanaModificarRecurso extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Ingrese nuevo nombre del recurso:");
+        jLabel1.setText("Ingrese ID del recurso a modificar:");
 
-        jLabel2.setText("Ingrese asignatura para el recurso:");
+        jLabel2.setText("Ingrese nuevo nombre del recurso:");
 
-        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+        jLabel3.setText("Ingrese asignatura para el recurso:");
+
+        jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent e){
-                if (!jTextField2.getText().isEmpty())
-                if (jTextField2.getText().equals("Opcional")) {
-                    jTextField2.setText("");
+                if (!jTextField3.getText().isEmpty())
+                if (jTextField3.getText().equals("Opcional")) {
+                    jTextField3.setText("");
                 }
 
             }
             public void focusLost(java.awt.event.FocusEvent e) {
-                if (jTextField2.getText().isEmpty()) {
-                    jTextField2.setText("Opcional");
+                if (jTextField3.getText().isEmpty()) {
+                    jTextField3.setText("Opcional");
                 }
             }
         });
-        jTextField2.setText("Opcional");
+        jTextField3.setText("Opcional");
 
         jButton1.setText("Modificar");
 
@@ -64,31 +66,41 @@ public class VentanaModificarRecurso extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                                    .addComponent(jTextField1)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
+                        .addGap(139, 139, 139)
                         .addComponent(jButton1)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(58, 58, 58)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(15, 15, 15))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -99,12 +111,15 @@ public class VentanaModificarRecurso extends javax.swing.JFrame {
     }
     
     public String getjTextField2(){
-        if (jTextField2.getText().equals("Opcional")){
-            return "";
-        }
         return jTextField2.getText();
     }
     
+    public String getjTextField3(){
+        if (jTextField3.getText().equals("Opcional")){
+            return "";
+        }
+        return jTextField3.getText();
+    }
     
     public JButton getjButton1() {
         return jButton1;
@@ -147,12 +162,15 @@ public class VentanaModificarRecurso extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

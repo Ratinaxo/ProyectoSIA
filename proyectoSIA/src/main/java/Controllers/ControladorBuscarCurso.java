@@ -11,7 +11,6 @@ import Views.VentanaNoExisteCurso;
 public class ControladorBuscarCurso implements MouseListener{
     private Colegio colegio;
     private VentanaBuscarCurso ventana;
-
     public ControladorBuscarCurso(Colegio colegio, VentanaBuscarCurso ventana){
         this.colegio = colegio;
         this.ventana = ventana;
