@@ -41,8 +41,7 @@ public class Colegio {
         return null;
     }
     
-    public void inicializarSistema() throws IOException
-    {
+    public void inicializarSistema() throws IOException {
         Curso curso, auxCurso;
         ArrayList<String> listaCursos = new ArrayList<>();
         ArrayList<String> listaRecursos = new ArrayList<>();
@@ -108,25 +107,7 @@ public class Colegio {
         }
     }
 
-    public boolean modificarRecurso(String nomCurso, int idRecurso, String nvoNombreRecurso, String nvaAsignatura)
-    {
-        if (((Curso)mapaCursos.get((String)nomCurso)).modificarRecurso(idRecurso, nvoNombreRecurso, nvaAsignatura))
-        {
-            for (int i = 0; i < cursos.size(); i++)
-            {
-                if (((Curso)cursos.get(i)).getCurso().equals(nomCurso))
-                {
-                    ((Curso)cursos.get(i)).modificarRecurso(idRecurso, nvoNombreRecurso, nvaAsignatura);
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-
-    public boolean eliminarRecurso(String nomCurso, int idRecurso)
-    {
+    public boolean eliminarRecurso(String nomCurso, int idRecurso) {
         if (((Curso)mapaCursos.get((String)nomCurso)).eliminarRecurso(idRecurso))
         {
             for (int i = 0; i < cursos.size(); i++)
@@ -142,10 +123,8 @@ public class Colegio {
         
         return false;
     }
-    
 
-    public void realizarReporte() throws IOException
-    {
+    public void realizarReporte() throws IOException {
         try (BufferedWriter escritor = new BufferedWriter(new FileWriter("src//main//java//Archivos//Reporte.txt")))
         {
             if (!cursos.isEmpty())
@@ -165,9 +144,7 @@ public class Colegio {
         }
     }
 
-
-    private String escribirReporte(Curso curso)
-    {
+    public String escribirReporte(Curso curso) {
         StringBuilder reporte = new StringBuilder();
 
         reporte.append("Curso: ").append(curso.getCurso()).append("\n");
@@ -200,8 +177,10 @@ public class Colegio {
 
         return reporte.toString();
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> adb11db267df7cbc6a2ffac1ea85fcb4d6e3ab9d
+    
+    public void agregarCurso(String profJefe, String nCurso){
+        Curso curso = new Curso(nCurso, profJefe);
+        mapaCursos.put(nCurso, curso);
+        cursos.add(curso);
+    }
 }

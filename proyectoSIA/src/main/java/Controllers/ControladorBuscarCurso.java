@@ -11,9 +11,11 @@ import Views.VentanaNoExisteCurso;
 public class ControladorBuscarCurso implements MouseListener{
     private Colegio colegio;
     private VentanaBuscarCurso ventana;
-    public ControladorBuscarCurso(Colegio colegio, VentanaBuscarCurso ventana){
+    private ControladorAdministrar admin;
+    public ControladorBuscarCurso(Colegio colegio, VentanaBuscarCurso ventana, ControladorAdministrar admin){
         this.colegio = colegio;
         this.ventana = ventana;
+        this.admin = admin;
         this.ventana.setListener(this);
         this.ventana.setVisible(true);
     }
@@ -22,8 +24,9 @@ public class ControladorBuscarCurso implements MouseListener{
         VentanaNoExisteCurso vc = new VentanaNoExisteCurso();
         if (colegio.getMapaCursos().containsKey(this.ventana.getjTextField1())){
             VentanaEditarRecursos vv = new VentanaEditarRecursos();
-            ControladorEditarRecursos cc = new ControladorEditarRecursos(colegio.getMapaCursos().get(this.ventana.getjTextField1()), vv);
+            ControladorEditarRecursos cc = new ControladorEditarRecursos(colegio.getMapaCursos().get(this.ventana.getjTextField1()), vv, admin);
             this.ventana.setVisible(false);
+            this.admin.switchVentana();
         }
         else{
             vc.setVisible(true);

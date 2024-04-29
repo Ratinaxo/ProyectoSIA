@@ -3,7 +3,6 @@ package Controllers;
 import Model.Colegio;
 import Model.Curso;
 import Model.RecursoDigital;
-
 import Views.VentanaBuscarCurso;
 import Views.VentanaMostrarCursos;
 import Views.VentanaAdministrar;
@@ -32,6 +31,7 @@ public class ControladorAdministrar implements MouseListener{
     public void performAction(MouseEvent e){
         
     }
+    
     public void mostrarCursos(){
         VentanaMostrarCursos vv = new VentanaMostrarCursos();
         String[] nomCursos = new String[cursos.size()];
@@ -42,14 +42,16 @@ public class ControladorAdministrar implements MouseListener{
         vv.setVisible(true);   
     }
     
-    public void modificarRecursos(){//POSIBLE TRY-CATH
+    public void editarRecursos(){//POSIBLE TRY-CATH
         VentanaBuscarCurso vv = new VentanaBuscarCurso();
-        ControladorBuscarCurso cc = new ControladorBuscarCurso(colegio, vv);
-        
+        ControladorBuscarCurso cc = new ControladorBuscarCurso(colegio, vv, this);
     }
     
-    public void guardarEnArchivo()
-    {
+    private void editarCursos() {
+        ControladorEditarCursos cc = new ControladorEditarCursos(colegio, this);
+    }
+    
+    public void guardarEnArchivo() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src//main//java//Archivos//Datos_iniciales.txt"))) {
             if (!cursos.isEmpty()) {
                 for (int i = 0; i < cursos.size(); i++) {
@@ -63,8 +65,7 @@ public class ControladorAdministrar implements MouseListener{
         }
     }
 
-    private String formatoCurso(Curso curso)
-    {
+    private String formatoCurso(Curso curso) {
         StringBuilder sb = new StringBuilder();
         RecursoDigital recurso;
         ArrayList<Integer> IdsRecursos = curso.getListaIDRecursos();
@@ -90,6 +91,13 @@ public class ControladorAdministrar implements MouseListener{
         return sb.toString();
     }
     
+    public void switchVentana(){
+        if (ventana.isVisible()){
+            ventana.setVisible(false);
+        }else{
+            ventana.setVisible(true);
+        }
+    }
     
     @Override
     public void mouseClicked (MouseEvent me) {
@@ -97,15 +105,18 @@ public class ControladorAdministrar implements MouseListener{
             mostrarCursos();
             
         }else if (me.getSource() == ventana.getjButton2()){
-            modificarRecursos();
+            editarRecursos();
             
         }else if (me.getSource() == ventana.getjButton3()){
-            ventana.setVisible(false);
-            controladorIni.switchVentana();
+            this.ventana.setVisible(false);
+            editarCursos();
+            
         }else if (me.getSource() == ventana.getjButton4()){
-            ventana.setVisible(false);
             controladorIni.switchVentana();
+            
         }else if (me.getSource() == ventana.getjButton5()){
+            this.ventana.setVisible(false);
+            controladorIni.switchVentana();
             guardarEnArchivo();
         }
     }

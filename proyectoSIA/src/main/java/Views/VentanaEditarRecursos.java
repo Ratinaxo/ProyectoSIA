@@ -121,12 +121,16 @@ public class VentanaEditarRecursos extends javax.swing.JFrame {
         return jButton4;
     }
     
+    public JButton getjButton5(){
+        return jButton5;
+    }
+    
     public void setListener(java.awt.event.MouseListener listener){
         jButton1.addMouseListener(listener);
         jButton2.addMouseListener(listener);
         jButton3.addMouseListener(listener);
         jButton4.addMouseListener(listener);
-
+        jButton5.addMouseListener(listener);
     }
     
     

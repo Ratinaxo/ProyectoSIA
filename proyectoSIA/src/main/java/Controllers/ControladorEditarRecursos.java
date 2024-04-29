@@ -9,19 +9,22 @@ import Views.VentanaListaRecursos;
 import Views.VentanaBuscarRecurso;
 
 public class ControladorEditarRecursos implements MouseListener{
-    Curso curso;
-    VentanaEditarRecursos ventana;
-    VentanaBuscarRecurso ventanaBusq;
-    public ControladorEditarRecursos(Curso curso, VentanaEditarRecursos ventana){
+    private Curso curso;
+    private VentanaEditarRecursos ventana;
+    private VentanaBuscarRecurso ventanaBusq;
+    private ControladorAdministrar admin;
+
+    public ControladorEditarRecursos(Curso curso, VentanaEditarRecursos ventana, ControladorAdministrar admin){
         this.curso = curso;
         this.ventana = ventana;
+        this.admin = admin;
         this.ventanaBusq = new VentanaBuscarRecurso();
         this.ventana.setListener(this);
         this.ventana.setVisible(true);
     }
     
     public void mostrarRecursos() {
-            ControladorMostrarRecursos cc = new ControladorMostrarRecursos(curso);
+        ControladorMostrarRecursos cc = new ControladorMostrarRecursos(curso);
     }
     
     public void agregarRecursos() {
@@ -50,6 +53,9 @@ public class ControladorEditarRecursos implements MouseListener{
             
         }else if (me.getSource() == ventana.getjButton4()){
             eliminarRecursos();
+        }else if (me.getSource() == ventana.getjButton5()){
+            this.ventana.dispose();
+            this.admin.switchVentana();
         }
     }
     @Override
