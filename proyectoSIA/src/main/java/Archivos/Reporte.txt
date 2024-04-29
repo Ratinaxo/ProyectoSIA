@@ -1,0 +1,116 @@
+Existe una cantidad de 16 cursos en este establecimiento
+
+Detalles de establecimiento:
+
+Curso: 1A
+Profesor jefe: Juan
+
+Recurso/Asignatura: Aula virtual / N/A
+
+=======================================
+
+Curso: 1B
+Profesor jefe: Jose
+
+Recurso/Asignatura: Correo electrónico / Lenguaje
+
+=======================================
+
+Curso: 2A
+Profesor jefe: Maria
+
+Recurso/Asignatura: Herramientas Adobe / Lenguaje
+
+=======================================
+
+Curso: 2B
+Profesor jefe: Carlos
+
+Recurso/Asignatura: Herramientas Office / Historia
+
+=======================================
+
+Curso: 3A
+Profesor jefe: Laura
+
+Recurso/Asignatura: Biblioteca virtual / Lenguaje 
+
+=======================================
+
+Curso: 3B
+Profesor jefe: Pedro
+
+Recurso/Asignatura: Herramientas de videoconferencia / N/A
+
+=======================================
+
+Curso: 4A
+Profesor jefe: Ana
+
+Recurso/Asignatura: Almacenamiento en la nube / Matematicas
+
+=======================================
+
+Curso: 4B
+Profesor jefe: Luis
+
+Recurso/Asignatura: Aula virtual / N/A
+
+=======================================
+
+Curso: 5A
+Profesor jefe: Sofia
+
+Recurso/Asignatura: Correo electrónico / N/A
+
+=======================================
+
+Curso: 5B
+Profesor jefe: Diego
+
+Recurso/Asignatura: Herramientas Adobe / Filosofia
+
+=======================================
+
+Curso: 6A
+Profesor jefe: Elena
+
+Recurso/Asignatura: Herramientas Office / Filosofia
+
+=======================================
+
+Curso: 6B
+Profesor jefe: Pablo
+
+Recurso/Asignatura: Biblioteca virtual / Historia
+
+=======================================
+
+Curso: 7A
+Profesor jefe: Carmen
+
+Recurso/Asignatura: Herramientas de videoconferencia / N/A
+
+=======================================
+
+Curso: 7B
+Profesor jefe: Andres
+
+Recurso/Asignatura: Almacenamiento en la nube / Ciencias
+
+=======================================
+
+Curso: 8A
+Profesor jefe: Lucia
+
+Recurso/Asignatura: Aula virtual / Matematicas
+
+=======================================
+
+Curso: 8B
+Profesor jefe: Doroty
+
+Recurso/Asignatura: Correo electrónico / Matematicas
+
+=======================================
+
