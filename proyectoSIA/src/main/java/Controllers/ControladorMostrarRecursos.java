@@ -22,22 +22,6 @@ public class ControladorMostrarRecursos implements MouseListener{
         
     }
     
-    /*
-    public void mostrarRecursos(){
-        VentanaListaRecursos ventanaMostrar = new VentanaListaRecursos();
-        if (!ventanaBuscar.getjTextField1().isEmpty()){
-            ventanaMostrar.updateList(curso.mostrarRecursos(ventanaBuscar.getjTextField1()));
-            ventanaMostrar.setVisible(true);
-            this.ventanaBuscar.setVisible(false);
-        }
-        else{
-            ventanaMostrar.updateList(curso.mostrarRecursos());
-            ventanaMostrar.setVisible(true);
-            this.ventanaBuscar.setVisible(false);
-        }
-    }
-    */
-    
     public void mostrarRecursos(){
         VentanaListaRecursos ventanaMostrar = new VentanaListaRecursos();
         try

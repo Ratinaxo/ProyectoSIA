@@ -20,7 +20,7 @@ public class ControladorBuscarCurso implements MouseListener{
         this.ventana.setVisible(true);
     }
     
-    public void comprobarCurso(){ //POSIBLE TRY-CATH
+    public void comprobarCurso(){
         VentanaNoExisteCurso vc = new VentanaNoExisteCurso();
         if (colegio.getMapaCursos().containsKey(this.ventana.getjTextField1())){
             VentanaEditarRecursos vv = new VentanaEditarRecursos();

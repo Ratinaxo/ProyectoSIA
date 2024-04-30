@@ -16,7 +16,7 @@ public class ControladorAgregarCurso implements MouseListener{
     }
     
     public void agregarCurso(){
-        this.colegio.agregarCurso(this.ventana.getjTextField1(), this.ventana.getjTextField2());
+        this.colegio.agregarCurso(this.ventana.getjTextField2(), this.ventana.getjTextField1());
     }
     
     @Override

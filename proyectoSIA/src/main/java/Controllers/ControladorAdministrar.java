@@ -42,7 +42,7 @@ public class ControladorAdministrar implements MouseListener{
         vv.setVisible(true);   
     }
     
-    public void editarRecursos(){//POSIBLE TRY-CATH
+    public void editarRecursos(){
         VentanaBuscarCurso vv = new VentanaBuscarCurso();
         ControladorBuscarCurso cc = new ControladorBuscarCurso(colegio, vv, this);
     }

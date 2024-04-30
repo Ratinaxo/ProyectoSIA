@@ -1,5 +1,4 @@
 1A,Juan,Aula virtual,
-1A,Juan,ASD,ASD
 1B,Jose,Correo electrónico,Lenguaje
 2A,Maria,Herramientas Adobe,Lenguaje
 2B,Carlos,Herramientas Office,Historia
