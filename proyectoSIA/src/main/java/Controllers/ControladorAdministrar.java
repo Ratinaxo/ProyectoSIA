@@ -112,12 +112,12 @@ public class ControladorAdministrar implements MouseListener{
             editarCursos();
             
         }else if (me.getSource() == ventana.getjButton4()){
+            guardarEnArchivo();
             controladorIni.switchVentana();
             
         }else if (me.getSource() == ventana.getjButton5()){
             this.ventana.setVisible(false);
             controladorIni.switchVentana();
-            guardarEnArchivo();
         }
     }
     
